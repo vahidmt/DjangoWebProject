@@ -1,0 +1,15 @@
+{% extends "account/layout.html" %}
+
+{% block content %}
+    {% load static %}
+    <link rel='stylesheet' type='text/css' href={% static 'css/styles.css'%}>
+    <script src={% static 'app/scripts/admin.js'%}></script>
+<nav>
+    {% for i in object_list %}
+        <ul class='ul-class'>
+            <h1 dir='auto' ><a class='title-home-blog-a' href={% url 'detail_admins' i.pk %}>{{ i.name_admin }}</a></h1>
+        </ul>
+    {% endfor %}
+</nav>
+{% endblock content %}
+

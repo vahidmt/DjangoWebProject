@@ -1,0 +1,65 @@
+{% comment %} {% extends "account/layout.html" %}  {% endcomment %}
+{% block content %}
+
+<html lang="en">
+<!-- new_blog.js -->
+
+<head>
+    {% load static %}
+    <link rel='stylesheet' type='text/css' href={% static 'startbootstrap-new-age-gh-pages/css/style.css'%}>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title}}</title>
+    {% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> {% endcomment %}
+    <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <form class='form-blog' method="post" action="{% url 'save_blog' %}">
+        {% csrf_token %}
+        <input class="inp-inp" placeholder="title of your weblog" name="title" id="myText" maxLength=15 autofocus></br>
+        <textarea name="text" id="editor1" rows="10" cols="80" placeholder="این قسمت بدنه متن شما است">
+        </textarea>
+        <script>
+        CKEDITOR.replace( 'editor1' );
+        </script>
+        <script>alert("این قسمت برای ساخت وبلاگ جدید است");</script>
+        
+
+        <script type="text/javascript">
+            function readTextFile(file, callback, encoding) {
+        var reader = new FileReader();
+        reader.addEventListener('load', function (e) {
+            callback(this.result);
+        });
+        if (encoding) reader.readAsText(file, encoding);
+        else reader.readAsText(file);
+        }
+
+        function fileChosen(input, output) {
+        if (input.files && input.files[0]) {
+            readTextFile(
+            input.files[0],
+            function (str) {
+            output.value = str;
+            }
+            );
+        }
+        }
+
+        $('#files').on('change', function () {
+        var result = $("#files").text();
+        
+        fileChosen(this, document.getElementById('editor1'));
+        CKEDITOR.instances['editor1'].setData(result);
+        });
+        </script>
+        <input class="submit" type="submit"></br>
+
+    </form>
+</body>
+
+</html>
+{% endblock content %}

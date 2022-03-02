@@ -1,0 +1,37 @@
+{% extends "account/layout.html" %}
+{% block content %}
+<html lang="en">
+
+{% if user.is_authenticated %}
+
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site_one.css' %}" />
+    <meta charset="utf-8" />
+    <title>{{ title}}</title>
+</head>
+
+<body>
+    <form action="{% url 'save_profile' %}" method="post" class='form'>
+        {% csrf_token %}
+        <div class="form-div">
+            <p class="profile-change-p">your first_name is:</p>
+            <input class="profile-change" name="first_name" value={{ fi }}>
+
+            <p class="profile-change-p">your last_name is: </p>
+            <input class="profile-change" name="last_name" value={{ la }}>
+            <p class="profile-change-p">your email is: </p>
+            <input class="profile-change" name="email" value={{ em }}>
+            <input class="profile-change" type="submit" value="save">
+        </div>
+    </form>
+
+</body>
+</html>
+{% else %}
+<h1>لطفاً اول وارد شوید</h1>
+{% endif %}
+{% endblock%}
+
+</html>

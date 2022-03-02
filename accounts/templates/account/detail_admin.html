@@ -1,0 +1,35 @@
+{% extends "account/layout.html" %} {% block content %}
+
+
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titlle}}</title>
+</head>
+
+<body>
+    <form class='edit-weblog' action={% url 'save_admins' id%} method="post">
+        {% csrf_token %}
+        <br>
+        <br>
+        <br>
+        <nav class='edit-weblog-nav'>
+            Username:<br>
+            <input type="text" value="{{ title}}">
+            <input type="submit" value="ثبت">
+        </nav>
+    </form>
+    <!-- delet_blog -->
+    <form action={% url 'delete_admin' id%} method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delet" class="Delet-input">
+    </form>
+</body>
+
+
+</html>
+{% endblock content %}

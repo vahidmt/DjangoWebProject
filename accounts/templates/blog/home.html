@@ -1,0 +1,16 @@
+{% extends "account/layout.html" %}
+<nav>
+{% block content %}
+{% load static %}
+    <link rel='stylesheet' type='text/css' href={% static 'css/styles.css'%}>
+    <title>blog</title>
+    <h1>My blog</h1>
+    {% for i in object_list %}
+    {% load static %}
+        <ul class='ul-class'>
+            <h1 dir='auto' ><a class='address' target="_blank" href="{% url 'detail' i.pk %}">{{ i.title }}</a></h1>
+        </ul>
+    {% endfor %}
+    {% endblock content %}
+</nav>
+

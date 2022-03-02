@@ -1,0 +1,153 @@
+body{
+    background-color: whitesmoke;
+}
+a{
+    color: rgb(4, 4, 15);
+    text-decoration: none;
+}
+.h1-1{
+    font-size: xx-large;
+}
+.address:visited{
+    color: blueviolet;
+}
+.blog-title{
+    font-size: x-large;
+    text-align: center;
+}
+.blog-body{
+    text-align: center;
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-synthesis:inherit;
+}
+.form{
+    border: 50px solid white;
+    border-top: black 5px solid;
+}
+.form-singup {
+    border: 2px gray solid;
+    border-radius: 60px;
+    margin-left: 125px;
+    margin-right: 125px;
+}
+.div-form-singup{
+    margin-left: 25px;
+}
+.h1-singup{
+    text-align: center;
+}
+.edit-weblog-nav{
+    border: 5px solid aqua;
+    margin-left: 75px;
+    margin-right: 75px;
+}
+.Delet-input{
+    background-color: red;
+}
+.menu_5,.menu_5{
+    list-style:none outside none;
+    margin:0 0 0 0;
+    padding:0 0 0 0;
+    font-family:"B Koodak","B Yekan",Tahoma,Arial, Helvetica, sans-serif,Cambria, Cochin, Georgia, Times, "Times New Roman", serif
+}
+.menu_5 ul{
+    position:relative;
+    top:-500px;
+    left:0px;
+    overflow:hidden;
+    z-index:-100px;
+    list-style:none outside none;
+    margin:0 0 0 0;
+    padding:0 0 0 0;
+}
+.menu_5 li{
+    float:right;
+    display:block;
+    position:relative;
+    direction:rtl;
+    text-align:center;
+    border:thin #fff groove;
+    background:rgb(23, 221, 228);
+    color:#fff;
+    padding:5px;
+    height:20px;
+    width:100px;
+}
+.menu_5 li:hover{
+    background:#000;
+}
+.menu_5 li:hover a{
+    color:#00B4FF
+}
+.menu_5 li:hover ul{
+    top:0px;
+    left:0px;
+    overflow:visible;
+    width:100px;
+}
+.menu_5 li a{
+    color:rgb(2, 1, 1);
+    text-decoration:none;
+}
+.menu_5 ul li{
+    width:100%;
+}
+.menu_5 li a{
+    float:none;
+    font-family:"B Koodak","B Yekan",Tahoma,Arial, Helvetica, sans-serif,Cambria, Cochin, Georgia, Times, "Times New Roman", serif
+}
+.menu_5 ul li:hover > a {
+color: #fff;
+    font-family:"B Koodak","B Yekan",Tahoma,Arial, Helvetica, sans-serif,Cambria, Cochin, Georgia, Times, "Times New Roman", serif
+}
+.div-form-login{
+    border: gray 1px solid;
+    border-radius: 60px;
+    margin-top: 125px;
+    margin-left: 250px;
+    margin-right: 250px;
+}
+.form-login{
+    margin-left: 150px;
+}
+.p-login{
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.form-control{
+    padding: 10px;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 60px;
+    font-family:inherit;
+    font-size: inherit;
+}
+.btn-primary{
+    color: black;
+    font-style: oblique;
+    font-size: medium;
+    border-radius: 60px;
+}
+.h1-Login{
+    text-align: center;
+}
+.form-controll{
+    border-radius: 60px;
+    padding: 10px;
+}
+.form-controll:hover{
+    color: white;
+    background-color: #000;
+}
+.admin-a{
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: #000 solid 2px;
+    padding: 10px;
+    border-radius: 60px;
+    margin-left: 5px;
+}
+.admin-a:hover{
+    background-color: #000;
+    color: white;
+}

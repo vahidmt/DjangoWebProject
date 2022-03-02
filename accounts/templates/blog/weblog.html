@@ -1,0 +1,15 @@
+{% extends "account/layout.html" %}
+
+<nav>
+    {% block content %} {% for i in object_list %} 
+    {% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+    <script src={% static 'app/scripts/edit_blog.js'%}></script>
+    <ul class='ul-class'>
+        <h1 dir='auto'><a class='title-home-blog-a' href="{% url 'detail_admin' i.pk %}">{{ i.title }}</a></h1>
+        {% comment %}
+        <h2 dir='rtl'><a href="{% url 'detail' i.pk %}">{{ i.title }}</a></h2> {% endcomment %}
+    </ul>
+    {% endfor %} {% endblock content %}
+</nav>

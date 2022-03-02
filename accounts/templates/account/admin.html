@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static%}
+    <link rel='stylesheet' type='text/css' href={% static 'css/styles.css'%}>
+    <title>{{ title}}</title>
+</head>
+
+<body>
+    <nav class="nav-admin"><br>
+        <a href='/' class="admin-a">My site </a><br><br><br>
+        <a href={% url 'admin_profile' %} class="admin-a">
+        My profile 
+        </a><br><br><br>
+        <a href={% url 'info_site' %} class="admin-a">
+        info site 
+        </a><br><br><br>
+        <a href={% url 'admin_name' %} class="admin-a">
+        new admin name
+        </a><br><br><br>
+        <a href='/new_blog' class="admin-a">
+        new blog
+        </a><br><br><br>
+        <a href={% url 'weblog' %} class="admin-a">
+        weblog
+        </a><br><br><br>
+        <a href={% url 'edit_admin' %} class="admin-a"> 
+        edit_admin 
+        </a><br><br><br>
+    </nav>
+    <h1 class="h1-1"dir='rtl'>لطفاً برای مدیریت سایت یکی از قسمت ها را انتخاب کنید در هر قسمت راهنمای فارسی موجود است.</h1>
+</body>
+
+</html>

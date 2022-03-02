@@ -1,0 +1,30 @@
+{% extends "account/layout.html" %} {% block content %}
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+    <br>
+    <br>
+    <form method="post" action={% url 'save_admin' %}> {% csrf_token %}
+        <input name="admin_name" placeholder="new admin Username">
+        <input type="submit">
+    </form>
+    <h1>
+        <a href="/admin/auth/user/" target="_blank">
+            برای مشاهده ی لیست کاربران رو این لینک بزنید
+        </a>
+    </h1>
+    <h1>اما برای ورود، حساب شما باید دسترسی کامل را داشته باشد</h1>
+</body>
+
+</html>
+{% endblock content %}

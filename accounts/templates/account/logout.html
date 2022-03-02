@@ -1,0 +1,17 @@
+<header>
+    {% comment %} <style> body { {% endcomment %}
+    {% comment %} background-color: aquamarine; {% endcomment %}
+{% comment %} }</style> {% endcomment %}
+    {% load static %}
+    <title>singup</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</header>
+<form method="POST" action="{% url 'logout' %}" id="logout" style="  border-style: solid;
+  border-color: green;">
+    <!--
+    در این قسمت برای ارسال فرم ها به جنگو باین سی اس آر اف توکن را داخل فرم بنویسیم
+    در غیر اینصورت جنگو فرم ارسالی را از ما نمی پذیرد
+    -->
+    {% csrf_token %}
+    <input type="submit" value="logout" class="btn btn-light">
+</form>

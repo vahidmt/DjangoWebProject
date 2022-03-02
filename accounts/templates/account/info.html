@@ -1,0 +1,22 @@
+{% extends "account/layout.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title}}</title>
+</head>
+
+<body>
+    <form action={% url 'save_info_site' %} method="post">
+        {% csrf_token %}
+        <h1>Title of your site</h1>
+        <br>
+        <input placeholder="title of your website" type="text" name='titlle' value={{ title}}>
+        <input type="submit">
+    </form>
+</body>
+</html>
+{% endblock content %}

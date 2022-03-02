@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    {% load static %}
+    <link rel='stylesheet' type='text/css' href={% static 'css/styles.css'%}>
+</head>
+
+<body>
+    <div class="navbarr-fixxed-top">
+        <div class="containerr">
+            <div class="menu_5">
+            <li><a href="/">Home</a></li>
+                   <li> <a href=" {% url 'about' %} ">about </a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %} ">logout </a></li>
+                        <li><a href="{% url 'profile' %}">Profile</a></li>
+
+                    {% else %}
+                        <li><a>Login</a>
+                            <ul class="navbarrr-nav">
+                                <li><a href="{% url 'signup' %} ">signup </a></li>
+                                <li><a href="{% url 'login' %} ">login </a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                    <br><br>
+                
+
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="container body-content ">
+        {% block content %}{% endblock %}
+        <hr/>
+        <footer>
+            <p>&copy; {{ year }} - My Blog Django</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

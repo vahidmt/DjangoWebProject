@@ -1,0 +1,30 @@
+{% block content %}
+
+<header>
+  {% load static%}
+  <link rel='stylesheet' type='text/css' href={% static 'css/styles.css'%}>
+  <title>{{ title}} login</title>
+
+
+</header >
+<body>
+{% if user.is_authenticated %}
+<h1>You are in the account</h1>
+{% else %}
+<h1 class="h1-Login">Login to your account</h1>
+<div class="div-form-login">
+  <form method="post" action="{% url 'login' %}" class="form-login">
+    {% csrf_token %}
+    <p class='p-login'>Username:</p>
+    <input type="text" name="username" class="form-control"/>
+    <p class='p-login'>Password:</p>
+    <input type="password" name="password" class="form-control"/><br><br>
+    <input class="btn btn-primary" type="submit" value="Login"/>
+  </form>
+</div>
+
+
+{% endif %}
+
+</body>
+{% endblock content %}

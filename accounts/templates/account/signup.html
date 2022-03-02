@@ -1,0 +1,32 @@
+{% block content %}
+{% load static%} {% comment %} {% load static %} {% endcomment %}
+<link rel='stylesheet' type='text/css' href={% static 'css/styles.css'%}>
+<title>{{ title}}</title>
+
+<body>
+    {% if user.is_authenticated %}
+    <h1>شماوارد حساب کاربری هستید</h1>
+    {% else %} {% comment %} {% url 'signup' %} {% endcomment %}
+    <form method="post" action={% url 'signup'  %} class="form-singup">
+        <div class="div-form-singup">
+            {% csrf_token %}
+            <h1 class="h1-singup">ثبت نام</h1>
+            <p class='p-signup'>Username:</p>
+            </br>
+            <input type="text" name="username" class="form-control" /></br>
+            <p class='p-signup'>Email:</p>
+            </br>
+            <input type="email" name="email" class="form-control" /></br>
+            <p class='p-signup'>Password:</p>
+            </br>
+            <input type="password" name="password1" class="form-control" /></br>
+            <p class='p-signup'>Confirm Password:</p>
+            </br>
+            <input type="password" name="password2" class="form-control" /></br>
+            <br></br>
+            <input type="submit" value="Sign Up!" class="form-controll" /></br>
+        </div>
+    </form>
+    {% endif %}
+</body>
+{% endblock content %}
