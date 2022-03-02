@@ -4,4 +4,4 @@ This website uses ckeditor, so you need to have ckeditor installed before runnin
 Thank you for liking this project if you like it.
 Admin Username: vahidmt
 Admin Password: 6622
-version:1.3.0
+version:1.5.2
