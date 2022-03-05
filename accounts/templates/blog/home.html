@@ -4,6 +4,12 @@
 {% load static %}
     <link rel='stylesheet' type='text/css' href={% static 'css/styles.css'%}>
     <title>blog</title>
+    <form action="{% url 'search' %}" method="post">
+        {% csrf_token %}
+        <input class="search-input" type="search" name="search" id="">
+        <input class="submit-search-input" type="submit" value="search">
+    </form>
+    
     <h1>My blog</h1>
     {% for i in object_list %}
     {% load static %}

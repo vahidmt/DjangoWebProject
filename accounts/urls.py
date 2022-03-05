@@ -22,5 +22,5 @@ urlpatterns = [
     path('detail_admin/<int:pk>', views.detail_admin, name='detail_admins'),
     path('save_admins/<int:pk>', views.save_admins, name='save_admins'),
     path('delete_admin/<int:pk>', views.delete_admin, name='delete_admin'),
-    path('about/', views.about, name='about')
+    path('about/', views.about, name='about'),
     ]

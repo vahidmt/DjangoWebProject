@@ -1,3 +1,4 @@
+import email
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -23,25 +24,30 @@ def signup(request):
                 # User.DoesNotExist
                 # که این ارور رو چند خط پایین تر در اکسپت گرفتیم
                 # و این ارور به معنی اینه که کاربر جدیده و باید ساخته بشه
-                user = User.objects.get(username=request.POST['username']) # means this username already Exist!
- 
+                User.objects.get(username=request.POST['username']) # means this username already Exist!
+
                 # در صورتی که در خط قبل کاربر موجود بود، کد به این خط میرسه و این یک پیام رو به صفحه مبدا بر می گردونه
                 #  و میگه که نام کاربری قبلا انتخاب شده
                 return render(request, 'account/signup.html', {'error':'Username has already been taken!'})
-            except User.DoesNotExist: # اگر نام کاربری از قبل موجود نبود، کاربر جدید رو میسازه
-                # ترتیب یوزرنیم و ایمیل و پسورد در متدزیر مهمه. مثلا اگر کلا ایمیل رو ننویسیم، و پسورد رو بعنوان دومی بنویسیم، پسورد میره بعنوان آدرس ایمیل کاربر ذخیره میشه
-                user = User.objects.create_user(request.POST['username'], request.POST['email'] , request.POST['password1'])
-                # در خط زیر با کاربری که در خط بالا ایجاد کرده در سایت لاگین می کنه
-                auth.login(request,user)
-                # و کاربر لاگین کرده رو زارت میفرسته به صفحه اصلی. البته میشد اینجا با یک پیام به کاربر اعلام کنیم که ثبت نام با موفقیت انجام شد.
-                return HttpResponse('با موفقیت ثبت نام کردید')
+            except:
+                try:
+                    User.objects.get(email=request.POST['email'])  
+                    return render(request, 'account/signup.html', {'error':'Email has already been taken!'})
+                except:
+                    # اگر نام کاربری از قبل موجود نبود، کاربر جدید رو میسازه
+                    # ترتیب یوزرنیم و ایمیل و پسورد در متدزیر مهمه. مثلا اگر کلا ایمیل رو ننویسیم، و پسورد رو بعنوان دومی بنویسیم، پسورد میره بعنوان آدرس ایمیل کاربر ذخیره میشه
+                    user = User.objects.create_user(request.POST['username'], request.POST['email'] , request.POST['password1'])
+                    # در خط زیر با کاربری که در خط بالا ایجاد کرده در سایت لاگین می کنه
+                    auth.login(request,user)
+                    # و کاربر لاگین کرده رو زارت میفرسته به صفحه اصلی. البته میشد اینجا با یک پیام به کاربر اعلام کنیم که ثبت نام با موفقیت انجام شد.
+                    return HttpResponse('با موفقیت ثبت نام کردید')
  
         else: # در صورتی که دوتا پسورد باهم همخوانی نداشته باشه
             return render(request,'account/signup.html', {'error':'paswords did not match!', 'title':title})
     else:
         # در این حالت متد پست فراخوانی نشده. یعنی کاربر فرم را سابمیت نکرده. بلکه فقط آدرس صفحه را زده که صفحه را ببیند.
         # بنابراین صفحه حاوی فرم به کاربر نمایش داده میشود و پردازشی انجام نمی شود.
-        return render(request, 'account/signup.html', {'title':title})
+        return render(request, 'account/signup.html', {'title':title, "error":"Singup"})
 def login(request):
     # اگر رکوئست با متد POST ارسال شده بود یعنی کاربر فرم لاگین را سابمیت کرده است
     if request.method == 'POST':
@@ -127,21 +133,35 @@ def profile(request):
             admins.objects.get(name_admin=us)
             return render(request, "account/admin.html", {'title':title})
         except:
-            return render(request, "account/admin_profile.html", {'title':title, 'la':la, 'fi':fi, 'em':em})
+            return render(request, "account/admin_profile.html", {'title':title, 'la':la, 'fi':fi, 'em':em, 'us':us})
     except:
         return HttpResponse("Please log in first")
 def save_profile(request):
     if request.method == 'POST':
+        em = request.user.email
         email = request.POST['email']
         last_name = request.POST['last_name']
         first_name = request.POST['first_name']
-        user_one = User.objects.get(email=email)
-            
+        user_one = User.objects.get(email=em)
+        if em == email:
+            user_one.last_name = last_name            
+            user_one.first_name = first_name
+            user_one.email = email
+            user_one.save()
+        else:
+            try:
+                User.objects.get(email=email)
+                return HttpResponse("Email has already been taken!")               
+            except:
+                user_one.last_name = last_name            
+                user_one.first_name = first_name
+                user_one.email = email
+                user_one.save()
         
-        user_one.last_name = last_name            
-        user_one.first_name = first_name
-        user_one.email = email
-        user_one.save()
+        # user_one.last_name = last_name            
+        # user_one.first_name = first_name
+        # user_one.email = email
+        # user_one.save()
         return HttpResponse("your profile save sucsessfull")
     else:
         return HttpResponse("Not Found")

@@ -90,3 +90,26 @@ class PostList(generics.ListAPIView):
     queryset = blogg.objects.all()
     serializer_class = PostSerializer
 
+def search(request):
+        if request.method == 'POST':
+            name_search = request.POST['search']
+            search_List = []
+            Find_title = []
+            Find_text_body = []
+            for i in range(10):
+                try:
+                    bl = blogg.objects.get(id=i)
+                    search_List.append(bl.title)
+                except:
+                    pass
+            for name_of_search in search_List:
+                if name_of_search == name_search:
+                    te = blogg.objects.get(title=name_of_search)
+                    Find_List_Save = name_of_search
+                    text = te.text_blog
+                    Find_text_body.append(text)
+                    Find_title.append(Find_List_Save)
+            return render(request, 'blog/find.html', {"title":Find_title, "text":Find_text_body})
+
+                
+

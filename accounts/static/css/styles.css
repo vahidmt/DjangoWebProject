@@ -11,6 +11,10 @@ a{
 .address:visited{
     color: blueviolet;
 }
+.address:hover{
+    color: white;
+    background-color: #000;
+}
 .blog-title{
     font-size: x-large;
     text-align: center;
@@ -123,24 +127,32 @@ color: #fff;
     font-size: inherit;
 }
 .btn-primary{
+    font-size: large;
     color: black;
-    font-style: oblique;
+    font-style: italic;
     font-size: medium;
     border-radius: 60px;
+}
+.btn-primary:hover{
+    background-color: #000;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .h1-Login{
     text-align: center;
 }
 .form-controll{
+    font-style: italic;
     border-radius: 60px;
+    font-size: large;
     padding: 10px;
 }
 .form-controll:hover{
     color: white;
     background-color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .admin-a{
-    font-size: x-large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: #000 solid 2px;
     padding: 10px;
@@ -150,4 +162,42 @@ color: #fff;
 .admin-a:hover{
     background-color: #000;
     color: white;
+    font-style: italic;
+}
+.singup-button{
+    border-radius: 60px;
+    font-size: large;
+}
+.singup-button:hover{
+    background-color: #000;
+    color: white;
+}
+.or-Label{
+    font-size: large;
+    font-style: italic;
+}
+.singup-button-a{
+    padding: 10px;
+    font-size: large;
+    font-style: italic;
+}
+.singup-button-a:hover{
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.h1-title{
+    text-align: center;
+}
+.p-text{
+    text-align: center;
+}
+.search-input{
+    border-radius: 60px;
+    padding: 5px;
+    font: bolder;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.submit-search-input{
+    border-radius: 60px;
+    padding: 5px;
 }

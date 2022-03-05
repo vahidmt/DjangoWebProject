@@ -1,0 +1,23 @@
+{% extends "account/layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <link rel='stylesheet' type='text/css' href={% static 'css/styles.css'%}>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {% csrf_token %}
+  {% for ti in title %}
+    <h1 class="h1-title">{{ ti}}</h1>
+  {% endfor %}  
+  {% for te in text %}
+    <p class="p-text">{{ te}}</p>
+  {% endfor %}
+</body>
+</html>
+{% endblock content %}

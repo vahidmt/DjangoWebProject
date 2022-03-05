@@ -2,7 +2,9 @@
 {% load static%} {% comment %} {% load static %} {% endcomment %}
 <link rel='stylesheet' type='text/css' href={% static 'css/styles.css'%}>
 <title>{{ title}}</title>
-
+<script>
+    alert("{{ error}}")
+</script>
 <body>
     {% if user.is_authenticated %}
     <h1>شماوارد حساب کاربری هستید</h1>
@@ -25,6 +27,7 @@
             <input type="password" name="password2" class="form-control" /></br>
             <br></br>
             <input type="submit" value="Sign Up!" class="form-controll" /></br>
+            <button class="singup-button"><a class="singup-button-a"href={% url 'login' %}>login</a></button>
         </div>
     </form>
     {% endif %}
