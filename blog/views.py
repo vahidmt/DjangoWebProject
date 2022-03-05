@@ -4,7 +4,6 @@ from .models import blogg
 from accounts.models import admins, info_site
 from django.views.generic import ListView, DetailView
 from rest_framework import generics
-from .serializers import PostSerializer
 
 
 
@@ -86,9 +85,6 @@ def delete_blog(request, pk):
     else:
         return HttpResponse('Not Found')
  
-class PostList(generics.ListAPIView):
-    queryset = blogg.objects.all()
-    serializer_class = PostSerializer
 
 def search(request):
         if request.method == 'POST':
