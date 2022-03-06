@@ -105,7 +105,14 @@ def search(request):
                     text = te.text_blog
                     Find_text_body.append(text)
                     Find_title.append(Find_List_Save)
-            return render(request, 'blog/find.html', {"title":Find_title, "text":Find_text_body})
+                elif name_of_search=="":
+                    Find_text_body.append("Not Found")
+                    Find_title.append("Not Found") 
+            Find_title_len = len(Find_title)
+            if Find_title_len == 0:
+                return render(request, 'blog/NotFound_search.html', {"title":"NOT Found", "text":"NOT Found"})
+            else:	
+                return render(request, 'blog/find.html', {"title":Find_title, "text":Find_text_body})	
 
                 
 
