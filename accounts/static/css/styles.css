@@ -201,3 +201,18 @@ color: #fff;
     border-radius: 60px;
     padding: 5px;
 }
+#admin_name{
+    border-radius: 30px;
+    padding: 10px;
+}
+#admin_name:hover{
+    font-size:medium;
+}
+.new-admin-submit{
+    border-radius: 30px;
+    padding: 10px;
+}
+.new-admin-submit:hover{
+    font-style:Arial;
+    padding:12px;
+}

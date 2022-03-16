@@ -3,7 +3,8 @@ from django.shortcuts import render
 from .models import blogg
 from accounts.models import admins, info_site
 from django.views.generic import ListView, DetailView
-from rest_framework import generics
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 
@@ -113,6 +114,34 @@ def search(request):
                 return render(request, 'blog/NotFound_search.html', {"title":"NOT Found", "text":"NOT Found"})
             else:	
                 return render(request, 'blog/find.html', {"title":Find_title, "text":Find_text_body})	
+# def send_email(request):
+#     email_from = settings.EMAIL_HOST_USER
+#     message_name = "hi"
+#     massage_email = "vahidmt1385@gmail.com"
+#     massage = "hi vahid"
+#     send_mail(
+#         message_name,
+#         massage,
+#         massage_email,
+#         ['vahidmt1385@gmail.com']
 
-                
 
+#     )
+#     # send_mail(
+#     #     'Subject here',
+#     #     'Here is the message.',
+#     #     'vahidmt1385@gmail.com',
+#     #     ['vahidmt1385@gmail.com'],
+#     #     fail_silently=False,
+#     # )
+#     return HttpResponse("Send email correct")
+def test(request):
+    if request.method == 'POST':
+        titlle = request.POST['cars']
+        return HttpResponse("you choice is: {}".format(titlle))
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = ["vahid", "navid", "hamid"]
+
+    return render(request, 'blog/test.html', {'form': form})

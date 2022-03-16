@@ -14,16 +14,15 @@
 <body>
     <br>
     <br>
+    <h1>please select username for new admin:</h1><hr>
     <form method="post" action={% url 'save_admin' %}> {% csrf_token %}
-        <input name="admin_name" placeholder="new admin Username">
-        <input type="submit">
+        <select id="admin_name" name="admin_name">
+            {% for i in us%}
+                <option value={{i}}>{{i}}</option>
+            {% endfor%}
+        </select>
+        <input type="submit" class="new-admin-submit">
     </form>
-    <h1>
-        <a href="/admin/auth/user/" target="_blank">
-            برای مشاهده ی لیست کاربران رو این لینک بزنید
-        </a>
-    </h1>
-    <h1>اما برای ورود، حساب شما باید دسترسی کامل را داشته باشد</h1>
 </body>
 
 </html>

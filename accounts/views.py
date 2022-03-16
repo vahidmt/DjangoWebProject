@@ -5,7 +5,7 @@ from django.contrib import auth
 from django.http import HttpResponse
 from django.views.generic import ListView
 from .models import admins, info_site
-
+from django.contrib.auth import get_user_model
 try:
     info = info_site.objects.get(id=1)
     title = info.title
@@ -167,12 +167,22 @@ def save_profile(request):
         return HttpResponse("Not Found")
     
 def admin_name(request):
-    try:
-        us = request.user.username
-        admins.objects.get(name_admin=us)
-        return render(request, "account/admin_name.html", {'title':title})
-    except:
-        return HttpResponse("Not Found")
+    # try:
+    users = User.objects.values()
+    username = []
+    rng = 100
+    for i in range(rng):
+        try:
+            usr = users[i]['username']
+            username.append(usr)
+        except:
+            break
+    us = request.user.username
+    admins.objects.get(name_admin=us)
+        
+    return render(request, "account/admin_name.html", {'title':title, "us":username})
+    # except:
+    #     return HttpResponse("Not Found")
 def save_admin(request):
     if request.method == 'POST':
         name = request.POST['admin_name']

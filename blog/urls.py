@@ -8,5 +8,7 @@ urlpatterns = [
     path('save_blog/<int:pk>', views.save_blog, name='save_blog'),
     path('delete_blog/<int:pk>', views.delete_blog, name='delete_blog'),
     path('detail_admin/<int:pk>', views.detail_admin, name='detail_admin'),
-    path('search/', views.search, name="search")
+    path('search/', views.search, name="search"),
+    path("test", views.test, name="test")
+    # path('send_email/', views.send_email, name='send_email')
     ]
